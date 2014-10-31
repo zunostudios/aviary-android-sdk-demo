@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'maven.aviary.com'
+        url uri("http://maven.aviary.com/repo/release")
+    }
+}
+
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+
+    defaultConfig {
+        applicationId "com.dnuon.aviarydemo"
+        minSdkVersion 10
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+    }
+
+}
+
+dependencies {
+    compile 'com.aviary.android.feather.sdk:aviary-sdk:3.4.3.351'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
